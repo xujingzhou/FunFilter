@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1D7620E5-03DC-4943-80F9-A12410D25248</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TailorableFilter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DB57AB60267C77BFA5F3D122A8BA32AF66AF5C1A</key>
+		<string>https://github.com/xujingzhou/FunFilter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TailorableFilter.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DB57AB60267C77BFA5F3D122A8BA32AF66AF5C1A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/xujingzhou/FunFilter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DB57AB60267C77BFA5F3D122A8BA32AF66AF5C1A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DB57AB60267C77BFA5F3D122A8BA32AF66AF5C1A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TailorableFilter(1.0)</string>
+		</dict>
+	</array>
+</dict>
+</plist>
