@@ -24,8 +24,8 @@
 #import "IASKAppSettingsViewController.h"
 
 #define MaxVideoLength MAX_VIDEO_DUR
-
 #define DemoVideoName @"Demo.mp4"
+#define MaxRunCount 30
 
 @interface ViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, PBJVideoPlayerControllerDelegate, ThemeScrollViewDelegate, SKStoreProductViewControllerDelegate, IASKSettingsDelegate, UIPopoverControllerDelegate>
 {
@@ -429,7 +429,7 @@
     [self defaultVideoSetting:url];
     
     // Hint to draw clipping area
-    if ([self getAppRunCount] < 6 && [self getNextStepRunCondition])
+    if ([self getAppRunCount] < MaxRunCount && [self getNextStepRunCondition])
     {
         if (_popTipView)
         {
@@ -441,7 +441,7 @@
     }
     
     // Hint to next step
-    //    if ([self getAppRunCount] < 6 && [self getNextStepRunCondition])
+    //    if ([self getAppRunCount] < MaxRunCount && [self getNextStepRunCondition])
     //    {
     //        if (_popTipView)
     //        {
@@ -809,7 +809,7 @@
     [self createRecommendAppButtons:recommendAppView];
     
     // Demo button
-    CGFloat widthButton = 100, heightButton = 60;
+    CGFloat widthButton = 60, heightButton = 60;
     _demoButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame)/2 - widthButton/2, CGRectGetHeight(self.view.frame) - heightButton, widthButton, heightButton)];
     UIImage *image = [UIImage imageNamed:@"demo"];
     [_demoButton setImage:image forState:UIControlStateNormal];
@@ -996,9 +996,14 @@
     [self createRecommendAppView];
     [self createThemeScrollView];
     
+    [self showVideoPlayView:NO];
+    
+    // Delete temp files
+    [self deleteTempDirectory];
+    
     // Hint
-    NSInteger appRunCount = [self getAppRunCount], maxRunCount = 6;
-    if (appRunCount < maxRunCount)
+    NSInteger appRunCount = [self getAppRunCount];
+    if (appRunCount < MaxRunCount)
     {
         [self createPopTipView];
     }
@@ -1011,11 +1016,6 @@
     
     [self addAppRunCount];
     
-    [self showVideoPlayView:NO];
-    
-    // Delete temp files
-    [self deleteTempDirectory];
-    
     // Test in simulator
 //    NSString *demoVideoPath = getFilePath(@"IMG_0916.m4v");
 //    [self setPickedVideo:getFileURL(demoVideoPath)];
@@ -1026,6 +1026,22 @@
     [super viewDidAppear:animated];
     
     [self createNavigationBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Disable system sleep
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    // Enable system sleep
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 - (void)viewDidLayoutSubviews
@@ -1232,8 +1248,7 @@
 - (void)addAppRunCount
 {
     NSUInteger appRunCount = [self getAppRunCount];
-    NSInteger limitCount = 6;
-    if (appRunCount < limitCount)
+    if (appRunCount < MaxRunCount)
     {
         ++appRunCount;
         NSString *appRunCountKey = @"AppRunCount";
