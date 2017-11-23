@@ -7,5 +7,5 @@ Freely painted area in a video, the software will automatically add filter on it
 Johnny Xu(徐景周)     
 Future Studio(未来工作室)    
 
-Target    
+E.g.       
 <img src="https://github.com/xujingzhou/FunFilter/blob/master/Resource/Demo/Demo.gif" width = "300" height = "500" alt="Target" align=center />
